@@ -1,4 +1,4 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomBytes } from 'crypto';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { UpdatePlayerDto } from './dto/update-player.dto';
@@ -6,7 +6,6 @@ import { UpdatePlayerDto } from './dto/update-player.dto';
 @Injectable()
 export class PlayersService {
     private readonly players = new Map<string, CreatePlayerDto>();
-    private readonly logger = new Logger(PlayersService.name);
 
     create(createPlayerDto: CreatePlayerDto) {
         const player = {
