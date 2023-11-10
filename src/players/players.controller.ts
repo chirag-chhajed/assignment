@@ -38,6 +38,11 @@ export class PlayersController {
         return this.playersService.findOne(id);
     }
 
+    @Get('rank/:val')
+    findRank(@Param('val') val: string) {
+        return this.playersService.findRank(+val);
+    }
+
     @Patch(':id')
     @UsePipes(new ValidationPipe())
     update(@Param('id') id: string, @Body() updatePlayerDto: UpdatePlayerDto) {

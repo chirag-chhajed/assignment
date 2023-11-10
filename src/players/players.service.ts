@@ -76,4 +76,19 @@ export class PlayersService {
 
         return this.players.get(randomKey);
     }
+
+    findRank(val: number) {
+        if (this.players.size === 0) {
+            throw new NotFoundException('No players found');
+        }
+
+        const players = Array.from(this.players.values()).filter(
+            (player) => player.score === val,
+        );
+
+        if (players.length === 0) {
+            throw new NotFoundException(`No players found with score ${val}`);
+        }
+        return players;
+    }
 }
